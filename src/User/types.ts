@@ -45,7 +45,7 @@ export interface UserDraft {
     isUpdating?: boolean;
     body: string;
     originalBody: string;
-    jsonMetadata: Record<string, any>;
+    jsonMetadata: Record<string, unknown>;
     lastUpdated: number;
     parentAuthor?: string;
     parentPermlink?: string;
@@ -83,7 +83,7 @@ export interface UserMetadata {
 }
 
 export interface UserAuth {
-    sessions?: Record<string, any>[];
+    sessions?: Array<Record<string, unknown>>;
     provider?: string;
     _id?: string;
     id?: string;
