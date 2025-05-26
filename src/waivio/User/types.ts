@@ -36,7 +36,7 @@ export interface UserNotifications {
     threadAuthorFollower?: boolean;
 }
 
-export interface UserDraft {
+export interface UserDraftData {
     title: string;
     draftId: string;
     author: string;
