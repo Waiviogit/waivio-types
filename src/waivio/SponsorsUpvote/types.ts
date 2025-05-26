@@ -1,5 +1,6 @@
 import { Document } from "mongoose";
-import { BOT_UPVOTE_STATUSES } from "../constants/campaignsData";
+import {BOT_UPVOTE_STATUSES} from "../../constants/general";
+
 
 export type BotUpvoteStatus = typeof BOT_UPVOTE_STATUSES[keyof typeof BOT_UPVOTE_STATUSES];
 
@@ -23,4 +24,4 @@ export interface SponsorsUpvote extends Document {
     expiredAt: Date;
     createdAt: Date;
     updatedAt: Date;
-} 
+}

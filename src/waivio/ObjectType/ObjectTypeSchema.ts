@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { FIELDS_NAMES } from "../constants/wobjectsData";
 import { ObjectType, TopExpert } from "./types";
 
 const TopExpertSchema = new mongoose.Schema<TopExpert>({
@@ -14,7 +13,7 @@ const ObjectTypeSchema = new mongoose.Schema<ObjectType>({
     top_wobjects: { type: [String], default: [] },
     weight: { type: Number, default: 0 },
     top_experts: { type: [TopExpertSchema], default: [] },
-    exposedFields: { type: [String], enum: Object.values(FIELDS_NAMES), default: [] },
+    exposedFields: { type: [String], default: [] },
 }, {
     toObject: { virtuals: true },
     timestamps: true,
@@ -22,4 +21,4 @@ const ObjectTypeSchema = new mongoose.Schema<ObjectType>({
 
 ObjectTypeSchema.index({ author: 1, permlink: 1 }, { unique: true });
 
-export default ObjectTypeSchema; 
+export default ObjectTypeSchema;

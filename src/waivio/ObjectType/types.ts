@@ -1,5 +1,4 @@
 import { Document } from "mongoose";
-import { FIELDS_NAMES } from "../constants/wobjectsData";
 
 export interface TopExpert {
     name?: string;
@@ -13,7 +12,7 @@ export interface ObjectType extends Document {
     top_wobjects?: string[];
     weight?: number;
     top_experts?: TopExpert[];
-    exposedFields?: (keyof typeof FIELDS_NAMES)[];
+    exposedFields?: string[];
     createdAt: Date;
     updatedAt: Date;
-} 
+}

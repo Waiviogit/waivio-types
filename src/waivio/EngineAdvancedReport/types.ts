@@ -1,18 +1,17 @@
 import { Document } from "mongoose";
-import { SUPPORTED_CURRENCIES, ADVANCED_REPORT_SYMBOLS } from "../constants/common";
+import {ADVANCED_REPORT_SYMBOLS, SUPPORTED_CURRENCIES} from "../../constants/general";
 
 type SupportedCurrency = keyof typeof SUPPORTED_CURRENCIES;
-type AdvancedReportSymbol = keyof typeof ADVANCED_REPORT_SYMBOLS;
 
 type RateFields = {
     [K in SupportedCurrency]?: number;
 };
 
 type SymbolRateFields = {
-    [K in `${AdvancedReportSymbol}.${SupportedCurrency}`]?: number;
+    [K in string & keyof typeof ADVANCED_REPORT_SYMBOLS as `${K}.${SupportedCurrency}`]?: number;
 };
 
-export interface EngineAdvancedReport extends Document, RateFields, SymbolRateFields {
+type BaseFields = {
     reportId?: string;
     refHiveBlockNumber?: number;
     blockNumber?: number;
@@ -41,4 +40,6 @@ export interface EngineAdvancedReport extends Document, RateFields, SymbolRateFi
     numberTransactions?: number;
     unstakingCooldown?: number;
     checked?: boolean;
-} 
+}
+
+export type EngineAdvancedReport = Document & RateFields & SymbolRateFields & BaseFields;

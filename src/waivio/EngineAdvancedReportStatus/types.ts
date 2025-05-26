@@ -1,6 +1,6 @@
 import { Document } from "mongoose";
 
-export interface Account {
+export interface EngineReportAccount {
     name?: string;
     offset?: number;
 }
@@ -12,11 +12,11 @@ export interface EngineAdvancedReportStatus extends Document {
     startDate?: Date;
     endDate?: Date;
     filterAccounts?: string[];
-    accounts?: Account[];
+    accounts?: EngineReportAccount[];
     deposits?: string;
     withdrawals?: string;
     status?: string;
     symbol?: string;
     addSwaps?: boolean;
     mergeRewards?: boolean;
-} 
+}

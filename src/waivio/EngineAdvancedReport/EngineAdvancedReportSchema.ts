@@ -1,21 +1,21 @@
 import mongoose from "mongoose";
-import { SUPPORTED_CURRENCIES, ADVANCED_REPORT_SYMBOLS } from "../constants/common";
+import { SUPPORTED_CURRENCIES, ADVANCED_REPORT_SYMBOLS } from "../../constants/general";
 import { EngineAdvancedReport } from "./types";
 
 const supportedCurrencies = Object.values(SUPPORTED_CURRENCIES);
 
-const availableRateFields = supportedCurrencies.reduce((acc, el) => {
+const availableRateFields = supportedCurrencies.reduce<Record<string, { type: NumberConstructor }>>((acc: Record<string, { type: NumberConstructor }>, el: string) => {
     acc[el] = { type: Number };
     return acc;
-}, {} as Record<string, { type: NumberConstructor }>);
+}, {});
 
-const availableSymbolRateFields = ADVANCED_REPORT_SYMBOLS.reduce((acc, el) => ({
+const availableSymbolRateFields = ADVANCED_REPORT_SYMBOLS.reduce<Record<string, { type: NumberConstructor }>>((acc: Record<string, { type: NumberConstructor }>, el: string) => ({
     ...acc,
-    ...supportedCurrencies.reduce((acc2, currency) => {
+    ...supportedCurrencies.reduce<Record<string, { type: NumberConstructor }>>((acc2: Record<string, { type: NumberConstructor }>, currency: string) => {
         acc2[`${el}.${currency}`] = { type: Number };
         return acc2;
-    }, {} as Record<string, { type: NumberConstructor }>),
-}), {} as Record<string, { type: NumberConstructor }>);
+    }, {}),
+}), {});
 
 const EngineAdvancedReportSchema = new mongoose.Schema<EngineAdvancedReport>({
     reportId: { type: String, index: true },

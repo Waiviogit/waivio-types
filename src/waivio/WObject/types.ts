@@ -1,13 +1,13 @@
 import { Document, Types } from "mongoose";
 
-export interface ActiveVote {
+export interface WObjectActiveVote {
     voter: string;
     weight: number;
     percent: number;
     rshares_weight: number;
 }
 
-export interface Field {
+export interface WObjectField {
     name?: string;
     body?: string;
     id?: string;
@@ -19,15 +19,15 @@ export interface Field {
     permlink?: string;
     endDate?: number;
     startDate?: number;
-    active_votes?: ActiveVote[];
+    active_votes?: WObjectActiveVote[];
 }
 
-export interface Authority {
+export interface WObjectAuthority {
     administrative: string[];
     ownership: string[];
 }
 
-export interface MapLocation {
+export interface WObjectMapLocation {
     type: 'Point';
     coordinates: [number, number]; // [longitude, latitude]
 }
@@ -46,9 +46,9 @@ export interface WObject extends Document {
     count_posts: number;
     parent: string;
     children: string[];
-    authority: Authority;
-    fields: Field[];
-    map?: MapLocation;
+    authority: WObjectAuthority;
+    fields: WObjectField[];
+    map?: WObjectMapLocation;
     latest_posts: Types.ObjectId[];
     status?: Record<string, string | number | boolean>;
     last_posts_count: number;
@@ -61,4 +61,4 @@ export interface WObject extends Document {
     updatedAt: Date;
     followers?: Document[];
     users?: Document[];
-} 
+}

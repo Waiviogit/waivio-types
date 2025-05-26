@@ -1,5 +1,5 @@
 import mongoose, { Types } from "mongoose";
-import { WObject, Authority, Field, MapLocation } from "./types";
+import { WObject, WObjectAuthority, WObjectField, WObjectMapLocation } from "./types";
 
 const ActiveVoteSchema = new mongoose.Schema({
     voter: { type: String },
@@ -8,7 +8,7 @@ const ActiveVoteSchema = new mongoose.Schema({
     rshares_weight: { type: Number },
 }, { _id: false });
 
-const FieldSchema = new mongoose.Schema<Field>({
+const FieldSchema = new mongoose.Schema<WObjectField>({
     name: { type: String },
     body: { type: String },
     id: { type: String },
@@ -23,12 +23,12 @@ const FieldSchema = new mongoose.Schema<Field>({
     active_votes: { type: [ActiveVoteSchema], default: [] },
 }, { _id: false });
 
-const AuthoritySchema = new mongoose.Schema<Authority>({
+const AuthoritySchema = new mongoose.Schema<WObjectAuthority>({
     administrative: { type: [String], default: [] },
     ownership: { type: [String], default: [] },
 }, { _id: false });
 
-const MapLocationSchema = new mongoose.Schema<MapLocation>({
+const MapLocationSchema = new mongoose.Schema<WObjectMapLocation>({
     type: { type: String, enum: ['Point'] },
     coordinates: { type: [Number] },
 }, { _id: false });
