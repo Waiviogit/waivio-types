@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
-import { RESERVATION_STATUSES, CAMPAIGN_STATUSES, CAMPAIGN_TYPES } from "../constants/campaignsData";
-import { CampaignV2, CampaignUser, ReservationTimetable } from "./types";
 
-const CampaignUserSchema = new mongoose.Schema<CampaignUser>({
+import { CampaignV2, CampaignV2User, CampaignV2ReservationTimetable } from "./types";
+import {CAMPAIGN_STATUSES, CAMPAIGN_TYPES, RESERVATION_STATUSES} from "../../constants/general";
+
+const CampaignUserSchema = new mongoose.Schema<CampaignV2User>({
     name: { type: String, required: true },
     objectPermlink: { type: String, required: true },
     reservationPermlink: { type: String, required: true, index: true },
@@ -29,7 +30,7 @@ const CampaignUserSchema = new mongoose.Schema<CampaignUser>({
     timestamps: true,
 });
 
-const ReservationTimetableSchema = new mongoose.Schema<ReservationTimetable>({
+const ReservationTimetableSchema = new mongoose.Schema<CampaignV2ReservationTimetable>({
     monday: { type: Boolean, default: true },
     tuesday: { type: Boolean, default: true },
     wednesday: { type: Boolean, default: true },
@@ -89,4 +90,4 @@ CampaignV2Schema.index({ reward: -1 });
 CampaignV2Schema.index({ rewardInUSD: -1 });
 CampaignV2Schema.index({ userName: 1, postPermlink: 1 });
 
-export default CampaignV2Schema; 
+export default CampaignV2Schema;

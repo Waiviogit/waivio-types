@@ -115,6 +115,7 @@ export const CAMPAIGN_STATUSES = {
 
 export const CAMPAIGN_TYPES = {
     REVIEWS: 'reviews',
+    MENTIONS: 'mentions',
 } as const;
 
 export const RESERVATION_STATUSES = {

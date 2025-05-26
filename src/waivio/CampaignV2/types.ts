@@ -1,11 +1,12 @@
 import { Document } from "mongoose";
-import { RESERVATION_STATUSES, CAMPAIGN_STATUSES, CAMPAIGN_TYPES } from "../constants/campaignsData";
+import {CAMPAIGN_STATUSES, CAMPAIGN_TYPES, RESERVATION_STATUSES} from "../../constants/general";
+
 
 export type ReservationStatus = typeof RESERVATION_STATUSES[keyof typeof RESERVATION_STATUSES];
 export type CampaignStatus = typeof CAMPAIGN_STATUSES[keyof typeof CAMPAIGN_STATUSES];
 export type CampaignType = typeof CAMPAIGN_TYPES[keyof typeof CAMPAIGN_TYPES];
 
-export interface CampaignUser {
+export interface CampaignV2User {
     name: string;
     objectPermlink: string;
     reservationPermlink: string;
@@ -27,7 +28,7 @@ export interface CampaignUser {
     updatedAt: Date;
 }
 
-export interface ReservationTimetable {
+export interface CampaignV2ReservationTimetable {
     monday: boolean;
     tuesday: boolean;
     wednesday: boolean;
@@ -64,14 +65,14 @@ export interface CampaignV2 extends Document {
     };
     requiredObject: string;
     objects: string[];
-    users: CampaignUser[];
+    users: CampaignV2User[];
     blacklistUsers: string[];
     whitelistUsers: string[];
     activationPermlink?: string;
     deactivationPermlink?: string;
     matchBots: string[];
     frequencyAssign: number;
-    reservationTimetable: ReservationTimetable;
+    reservationTimetable: CampaignV2ReservationTimetable;
     app?: string;
     expiredAt?: Date;
     stoppedAt?: Date;
@@ -80,4 +81,4 @@ export interface CampaignV2 extends Document {
     payoutTokenRateUSD?: number;
     createdAt: Date;
     updatedAt: Date;
-} 
+}
