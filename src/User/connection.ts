@@ -2,5 +2,5 @@ export const UserConnection = {
     modelName: 'User',
     collectionName: 'users',
     schemaName: 'UserSchema',
-    dbName: 'waivio',
+    databaseName: 'waivio',
 } as const;

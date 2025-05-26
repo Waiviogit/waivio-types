@@ -40,7 +40,7 @@ export const LANGUAGES = ['en-US',
     'zh-CN',
     'af-ZA',
     'auto',
-];
+] as const;
 
 export const SUPPORTED_CURRENCIES = {
     USD: 'USD',
@@ -54,15 +54,82 @@ export const SUPPORTED_CURRENCIES = {
     RUB: 'RUB',
     UAH: 'UAH',
     CHF: 'CHF',
-};
-
+} as const;
 
 export const REFERRAL_TYPES = {
     REWARDS: 'rewards',
-};
+} as const;
 
 export const REFERRAL_STATUSES = {
     NOT_ACTIVATED: 'notActivated',
     ACTIVATED: 'activated',
     REJECTED: 'rejected',
+} as const;
+
+export const STATUSES = {
+    ACTIVE: 'active',
+    INACTIVE: 'inactive',
+    PENDING: 'pending',
+    SUSPENDED: 'suspended',
+} as const;
+
+export const SHOP_SETTINGS_TYPE = {
+    USER: 'user',
+    OBJECT: 'object',
+} as const;
+
+export const SUPPORTED_COLORS = {
+    BACKGROUND: 'background',
+    FONT: 'font',
+    HOVER: 'hover',
+    HEADER: 'header',
+    BUTTON: 'button',
+    BORDER: 'border',
+    FOCUS: 'focus',
+    LINKS: 'links',
+    MAP_MARKER_BODY: 'mapMarkerBody',
+    MAP_MARKER_TEXT: 'mapMarkerText',
+} as const;
+
+export const BILLING_TYPE = {
+    CRYPTO: 'crypto',
+    PAYPAL_SUBSCRIPTION: 'paypal_subscription',
+} as const;
+
+export const BOT_UPVOTE_STATUSES = {
+    UPVOTED: 'upvoted',
+    PENDING: 'pending',
+} as const;
+
+export const CAMPAIGN_STATUSES = {
+    PENDING: 'pending',
+    ACTIVE: 'active',
+    INACTIVE: 'inactive',
+    EXPIRED: 'expired',
+    DELETED: 'deleted',
+    PAYED: 'payed',
+    REACHED_LIMIT: 'reachedLimit',
+    ON_HOLD: 'onHold',
+    SUSPENDED: 'suspended',
+} as const;
+
+export const CAMPAIGN_TYPES = {
+    REVIEWS: 'reviews',
+} as const;
+
+export const RESERVATION_STATUSES = {
+    ASSIGNED: 'assigned',
+    UNASSIGNED: 'unassigned',
+    COMPLETED: 'completed',
+    REJECTED: 'rejected',
+    EXPIRED: 'expired',
+} as const;
+
+export const ADVANCED_REPORT_SYMBOLS = ['WAIV'] as const;
+
+// Helper function to get default colors
+export const getDefaultColors = () => {
+    const colors: Record<string, null> = {};
+    Object.values(SUPPORTED_COLORS).forEach((color) => { colors[color] = null; });
+    return colors;
 };

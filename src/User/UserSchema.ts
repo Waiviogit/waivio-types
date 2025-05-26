@@ -1,20 +1,19 @@
-import  { Schema } from "mongoose";
-import {LANGUAGES, REFERRAL_STATUSES, REFERRAL_TYPES, SUPPORTED_CURRENCIES} from "../constants/general";
-import {UserAuth, UserReferral, UserShop, User, UserMetadata, UserNotifications} from "./types";
+import mongoose from "mongoose";
+import { LANGUAGES, REFERRAL_STATUSES, REFERRAL_TYPES, SUPPORTED_CURRENCIES } from "../constants/general";
+import { User, UserAuth, UserReferral, UserShop, UserMetadata, UserNotifications } from "./types";
 
-const UserShopSchema = new Schema<UserShop>({
+const UserShopSchema = new mongoose.Schema<UserShop>({
     hideLinkedObjects: { type: Boolean },
 }, { _id: false });
 
-const UserReferralsSchema = new Schema<UserReferral>({
+const UserReferralsSchema = new mongoose.Schema<UserReferral>({
     agent: { type: String, index: true },
     startedAt: { type: Date },
     endedAt: { type: Date },
-    type: { type: String, enum: Object.values(REFERRAL_TYPES) },
+    type: { type: String, enum: Object.keys(REFERRAL_TYPES) },
 }, { _id: false });
 
-const UserNotificationsSchema = new Schema<UserNotifications>(
-    {
+const UserNotificationsSchema = new mongoose.Schema<UserNotifications>({
     activationCampaign: { type: Boolean, default: true },
     deactivationCampaign: { type: Boolean, default: true },
     follow: { type: Boolean, default: true },
@@ -38,30 +37,22 @@ const UserNotificationsSchema = new Schema<UserNotifications>(
     threadAuthorFollower: { type: Boolean, default: false },
 }, { _id: false });
 
-const UserMetadataSchema = new Schema<UserMetadata>({
+const UserMetadataSchema = new mongoose.Schema<UserMetadata>({
     notifications_last_timestamp: { type: Number, default: 0 },
     settings: {
-        // Enable this option to use the exit page when clicking on an external link.
         exitPageSetting: { type: Boolean, default: false },
-        locale: { type: String, enum: [...LANGUAGES], default: 'auto' }, // which language use on waivio
-        // in which language do you want read posts
-        postLocales: { type: [{ type: String, enum: [...LANGUAGES] }], default: [] },
-        nightmode: { type: Boolean, default: false }, // toggle nightmode on UI
-        rewardSetting: { type: String, enum: ['SP', '50', 'STEEM'], default: '50' }, // in which format get rewards from posts
-        rewriteLinks: { type: Boolean, default: false }, // change links from steemit.com to waivio.com
-        showNSFWPosts: { type: Boolean, default: false }, // show or hide NSFW posts
-        upvoteSetting: { type: Boolean, default: false }, // enable auto like on your posts
+        locale: { type: String, enum: LANGUAGES, default: 'auto' },
+        postLocales: { type: [{ type: String, enum: LANGUAGES }], default: [] },
+        nightmode: { type: Boolean, default: false },
+        rewardSetting: { type: String, enum: ['SP', '50', 'STEEM'], default: '50' },
+        rewriteLinks: { type: Boolean, default: false },
+        showNSFWPosts: { type: Boolean, default: false },
+        upvoteSetting: { type: Boolean, default: false },
         hiveBeneficiaryAccount: { type: String, default: '' },
-        votePercent: {
-            type: Number, min: 1, max: 10000, default: 10000,
-        }, // default percent of your upvotes
-        votingPower: { type: Boolean, default: true }, // dynamic toggle of vote power on each vote
+        votePercent: { type: Number, min: 1, max: 10000, default: 10000 },
+        votingPower: { type: Boolean, default: true },
         userNotifications: { type: UserNotificationsSchema, default: () => ({}) },
-        currency: {
-            type: String,
-            enum: Object.values(SUPPORTED_CURRENCIES),
-            default: SUPPORTED_CURRENCIES.USD,
-        },
+        currency: { type: String, enum: Object.keys(SUPPORTED_CURRENCIES), default: SUPPORTED_CURRENCIES.USD },
         hideFavoriteObjects: { type: Boolean },
         hideRecipeObjects: { type: Boolean },
         shop: { type: UserShopSchema },
@@ -89,34 +80,30 @@ const UserMetadataSchema = new Schema<UserMetadata>({
         default: [],
     },
     new_user: { type: Boolean, default: true },
-});
+}, { _id: false });
 
-const UserAuthSchema = new Schema<UserAuth>({
+const UserAuthSchema = new mongoose.Schema<UserAuth>({
     sessions: { type: [Object], select: false },
     _id: { type: String, select: false },
     id: { type: String, select: false },
     provider: { type: String },
-});
+}, { _id: false });
 
-export const UserSchema = new Schema<User>({
+const UserSchema = new mongoose.Schema<User>({
     name: { type: String, index: true, unique: true },
     alias: { type: String },
     profile_image: { type: String },
-    // arr of author_permlink of objects what user following
     objects_follow: { type: [String], default: [] },
-    users_follow: { type: [String], default: [] }, // arr of users which user follow
+    users_follow: { type: [String], default: [] },
     json_metadata: { type: String, default: '' },
     posting_json_metadata: { type: String, default: '' },
-    wobjects_weight: { type: Number, default: 0 }, // sum of weight of all wobjects
-    count_posts: { type: Number, default: 0, index: true }, // count of the all posts
-    last_posts_count: { type: Number, default: 0 }, // count of the posts written in last day
+    wobjects_weight: { type: Number, default: 0 },
+    count_posts: { type: Number, default: 0, index: true },
+    last_posts_count: { type: Number, default: 0 },
     last_posts_counts_by_hours: { type: [Number], default: [] },
     user_metadata: { type: UserMetadataSchema, default: () => ({}), select: false },
     privateEmail: { type: String, default: null, select: false },
-    auth: {
-        type: UserAuthSchema,
-        default: null,
-    },
+    auth: { type: UserAuthSchema, default: null },
     followers_count: { type: Number, default: 0 },
     users_following_count: { type: Number, default: 0 },
     last_root_post: { type: String, default: null },
@@ -132,12 +119,15 @@ export const UserSchema = new Schema<User>({
     whiteListTimestamp: { type: Number },
     spamDetected: { type: Boolean },
     blocked: { type: Boolean },
-},
-    {
-        timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true }
-    }
-    )
-    .index({ wobjects_weight: -1 })
-    .index({ objects_follow: -1 })
+}, {
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+});
+
+UserSchema.index({ wobjects_weight: -1 });
+UserSchema.index({ objects_follow: -1 });
+
+export default UserSchema;
 
 
