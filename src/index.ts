@@ -23,6 +23,28 @@ export type {
   AppShopSettings,
   AppConfiguration
 } from './waivio/App/types';
+export type {
+  AppAffiliate,
+} from './waivio/AppAffiliate/types';
+export type {
+  Blacklist
+} from './waivio/Blacklist/types';
+export type {
+  BotUpvote,
+} from './waivio/BotUpvote/types';
+export type {
+  Campaign,
+  CampaignMap,
+  CampaignPayment,
+  CampaignUser,
+  CampaignReservationTimetable
+} from './waivio/Campaign/types';
+export type {
+  CampaignV2,
+  CampaignV2User,
+  CampaignV2ReservationTimetable
+}  from './waivio/CampaignV2/types'
+
 
 import { UserSchema } from './waivio/User/UserSchema';
 import { UserConnection } from './waivio/User/connection';
