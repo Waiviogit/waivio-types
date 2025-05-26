@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import mongooseLeanVirtuals from "mongoose-lean-virtuals";
 import { LANGUAGES } from "../../constants/general";
 import { Post, PostActiveVote, PostWobject, PostReblog } from "./types";
 
@@ -66,8 +65,6 @@ PostSchema.virtual('fullObjects', {
     foreignField: 'author_permlink',
     justOne: false,
 });
-
-PostSchema.plugin(mongooseLeanVirtuals);
 
 PostSchema.index({ author: 1, permlink: 1 }, { unique: true });
 PostSchema.index({ root_author: 1, permlink: 1 }, { unique: true });

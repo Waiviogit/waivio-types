@@ -1,6 +1,6 @@
 export const ObjectTypeConnection = {
-    modelName: 'ObjectType',
+    modelName: 'objecttypes',
     collectionName: 'object_types',
     schemaName: 'ObjectTypeSchema',
     databaseName: 'waivio',
-} as const; 
+} as const;

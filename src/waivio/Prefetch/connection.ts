@@ -1,6 +1,6 @@
 export const PrefetchConnection = {
     modelName: 'prefetch',
-    collectionName: 'prefetch',
+    collectionName: 'prefetches',
     schemaName: 'PrefetchSchema',
     databaseName: 'waivio',
-} as const; 
+} as const;

@@ -1,6 +1,6 @@
 export const WobjectSubscriptionConnection = {
     modelName: 'WobjectSubscriptions',
-    collectionName: 'WobjectSubscriptions',
+    collectionName: 'wobjectsubscriptions',
     schemaName: 'WobjectSubscriptionSchema',
     databaseName: 'waivio',
-} as const; 
+} as const;

@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
-import { COMMENT_REF_TYPES } from "../constants/common";
+import { COMMENT_REF_TYPES } from "../../constants/general";
 import { CommentRef } from "./types";
 
 const CommentRefSchema = new mongoose.Schema<CommentRef>({
     comment_path: { type: String, required: true },
-    type: { 
-        type: String, 
-        required: true, 
-        enum: Object.values(COMMENT_REF_TYPES) 
+    type: {
+        type: String,
+        required: true,
+        enum: Object.values(COMMENT_REF_TYPES)
     },
     wobjects: {
         type: String,
@@ -32,4 +32,4 @@ const CommentRefSchema = new mongoose.Schema<CommentRef>({
 
 CommentRefSchema.index({ comment_path: 1 }, { unique: true });
 
-export default CommentRefSchema; 
+export default CommentRefSchema;

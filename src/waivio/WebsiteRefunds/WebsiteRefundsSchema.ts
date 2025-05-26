@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import { REFUND_TYPES, REFUND_STATUSES } from "../constants/sitesConstants";
 import { WebsiteRefunds } from "./types";
+import {REFUND_STATUSES, REFUND_TYPES} from "../../constants/general";
 
 const WebsiteRefundsSchema = new mongoose.Schema<WebsiteRefunds>({
     userName: { type: String, required: true, index: true },
@@ -11,4 +11,4 @@ const WebsiteRefundsSchema = new mongoose.Schema<WebsiteRefunds>({
     rejectMessage: { type: String, default: '' },
 }, { timestamps: true });
 
-export default WebsiteRefundsSchema; 
+export default WebsiteRefundsSchema;

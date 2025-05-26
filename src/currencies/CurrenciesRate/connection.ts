@@ -1,6 +1,6 @@
 export const CurrenciesRateConnection = {
     modelName: 'CurrenciesRate',
-    collectionName: 'currencies-rate',
+    collectionName: 'currencies-rates',
     schemaName: 'CurrenciesRateSchema',
     databaseName: 'Currencies',
 } as const;

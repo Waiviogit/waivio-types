@@ -1,5 +1,6 @@
 import { Document } from "mongoose";
-import { REFUND_TYPES, REFUND_STATUSES } from "../constants/sitesConstants";
+import {REFUND_STATUSES, REFUND_TYPES} from "../../constants/general";
+
 
 export type RefundType = typeof REFUND_TYPES[keyof typeof REFUND_TYPES];
 export type RefundStatus = typeof REFUND_STATUSES[keyof typeof REFUND_STATUSES];
@@ -13,4 +14,4 @@ export interface WebsiteRefunds extends Document {
     rejectMessage: string;
     createdAt: Date;
     updatedAt: Date;
-} 
+}

@@ -134,5 +134,31 @@ export const getDefaultColors = () => {
     return colors;
 };
 
-export const allowedCurrencies = ['usd', 'btc'];
-export const allowedIds = ['hive', 'hive_dollar'];
+export const allowedCurrencies = ['usd', 'btc'] as const;
+export const allowedIds = ['hive', 'hive_dollar'] as const;
+
+export const COMMENT_REF_TYPES = {
+    postWithWobjects: 'post_with_wobj',
+    createWobj: 'create_wobj',
+    appendWobj: 'append_wobj',
+    wobjType: 'wobj_type',
+} as const;
+
+export const PAYMENT_TYPES = {
+    TRANSFER: 'transfer',
+    CREDIT: 'credit', // special type admin can give credits to site
+    WRITE_OFF: 'writeOff',
+    REFUND: 'refund',
+} as const;
+
+
+export const REFUND_TYPES = {
+    WEBSITE_REFUND: 'website_refund',
+} as const;
+
+export const REFUND_STATUSES = {
+    PENDING: 'pending',
+    COMPLETED: 'completed',
+    REJECTED: 'rejected',
+    FROZEN: 'frozen',
+} as const;

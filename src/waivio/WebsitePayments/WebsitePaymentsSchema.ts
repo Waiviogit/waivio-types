@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import { PAYMENT_TYPES } from "../constants/sitesConstants";
 import { WebsitePayments } from "./types";
+import {PAYMENT_TYPES} from "../../constants/general";
 
 const WebsitePaymentsSchema = new mongoose.Schema<WebsitePayments>({
     userName: { type: String, required: true, index: true },
@@ -15,4 +15,4 @@ const WebsitePaymentsSchema = new mongoose.Schema<WebsitePayments>({
 
 WebsitePaymentsSchema.index({ createdAt: -1 });
 
-export default WebsitePaymentsSchema; 
+export default WebsitePaymentsSchema;

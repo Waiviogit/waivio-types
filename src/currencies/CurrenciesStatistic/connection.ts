@@ -1,6 +1,6 @@
 export const CurrenciesStatisticConnection = {
     modelName: 'CurrenciesStatistic',
-    collectionName: 'currencies-statistic',
+    collectionName: 'currencies-statistics',
     schemaName: 'CurrenciesStatisticSchema',
     databaseName: 'Currencies',
 } as const;

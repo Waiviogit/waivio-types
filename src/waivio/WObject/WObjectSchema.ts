@@ -73,18 +73,4 @@ WObjectSchema.index({ activeCampaignsCount: -1, weight: -1 });
 WObjectSchema.index({ object_type: -1, weight: -1 });
 WObjectSchema.index({ 'status.title': -1, 'status.link': -1 });
 
-WObjectSchema.virtual('followers', {
-    ref: 'User',
-    localField: 'author_permlink',
-    foreignField: 'objects_follow',
-    justOne: false,
-});
-
-WObjectSchema.virtual('users', {
-    ref: 'User',
-    localField: 'author_permlink',
-    foreignField: 'w_objects.author_permlink',
-    justOne: false,
-});
-
-export default WObjectSchema; 
+export default WObjectSchema;

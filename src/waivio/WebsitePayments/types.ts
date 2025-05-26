@@ -1,5 +1,5 @@
 import { Document } from "mongoose";
-import { PAYMENT_TYPES } from "../constants/sitesConstants";
+import {PAYMENT_TYPES} from "../../constants/general";
 
 export type PaymentType = typeof PAYMENT_TYPES[keyof typeof PAYMENT_TYPES];
 
@@ -14,4 +14,4 @@ export interface WebsitePayments extends Document {
     transferTo?: string;
     createdAt: Date;
     updatedAt: Date;
-} 
+}

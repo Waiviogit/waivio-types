@@ -1,6 +1,6 @@
 export const HiveEngineRateConnection = {
     modelName: 'HiveEngineRate',
-    collectionName: 'hive-engine-rate',
+    collectionName: 'hive-engine-rates',
     schemaName: 'HiveEngineRateSchema',
     databaseName: 'Currencies',
 } as const;
