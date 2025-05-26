@@ -133,3 +133,6 @@ export const getDefaultColors = () => {
     Object.values(SUPPORTED_COLORS).forEach((color) => { colors[color] = null; });
     return colors;
 };
+
+export const allowedCurrencies = ['usd', 'btc'];
+export const allowedIds = ['hive', 'hive_dollar'];
