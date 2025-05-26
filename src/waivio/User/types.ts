@@ -1,5 +1,5 @@
 import { Document } from "mongoose";
-import { LANGUAGES, REFERRAL_STATUSES, REFERRAL_TYPES, SUPPORTED_CURRENCIES } from "../constants/general";
+import { LANGUAGES, REFERRAL_STATUSES, REFERRAL_TYPES, SUPPORTED_CURRENCIES } from "../../constants/general";
 
 export interface UserShop {
     hideLinkedObjects?: boolean;

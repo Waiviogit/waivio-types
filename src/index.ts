@@ -7,8 +7,7 @@ export type {
   UserNotifications,
   UserReferral,
   UserShop
-} from './User/types';
-
+} from './waivio/User/types';
 export type {
   App,
   AppAdSense,
@@ -23,12 +22,12 @@ export type {
   AppCity,
   AppShopSettings,
   AppConfiguration
-} from './App/types';
+} from './waivio/App/types';
 
-import { UserSchema } from './User/UserSchema';
-import { UserConnection } from './User/connection';
-import { AppSchema } from './App/AppSchema';
-import { AppConnection } from './App/connection';
+import { UserSchema } from './waivio/User/UserSchema';
+import { UserConnection } from './waivio/User/connection';
+import { AppSchema } from './waivio/App/AppSchema';
+import { AppConnection } from './waivio/App/connection';
 
 // Database-specific exports
 export const waivio = {
@@ -44,7 +43,7 @@ export const waivio = {
 } as const;
 
 // Re-export individual items for backward compatibility
-export { UserSchema } from './User/UserSchema';
-export { UserConnection } from './User/connection';
-export { AppSchema } from './App/AppSchema';
-export { AppConnection } from './App/connection';
+export { UserSchema } from './waivio/User/UserSchema';
+export { UserConnection } from './waivio/User/connection';
+export { AppSchema } from './waivio/App/AppSchema';
+export { AppConnection } from './waivio/App/connection';

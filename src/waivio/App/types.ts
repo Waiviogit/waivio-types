@@ -1,5 +1,5 @@
 import { Document } from "mongoose";
-import { STATUSES, SHOP_SETTINGS_TYPE, BILLING_TYPE, SUPPORTED_CURRENCIES, LANGUAGES, REFERRAL_TYPES } from "../constants/general";
+import { STATUSES, SHOP_SETTINGS_TYPE, BILLING_TYPE, SUPPORTED_CURRENCIES, LANGUAGES, REFERRAL_TYPES } from "../../constants/general";
 
 export interface AppAdSense {
     code?: string;
@@ -150,4 +150,4 @@ export interface App extends Document {
     trustedAll: string[];
     createdAt: Date;
     updatedAt: Date;
-} 
+}

@@ -9,7 +9,7 @@ export interface UserDraft extends Document {
     isUpdating?: boolean;
     body?: string;
     originalBody?: string;
-    jsonMetadata?: Record<string, any>;
+    jsonMetadata?: Record<string, string | number | boolean | null>;
     lastUpdated?: number;
     parentAuthor?: string;
     parentPermlink?: string;

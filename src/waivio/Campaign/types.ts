@@ -1,5 +1,5 @@
 import { Document } from "mongoose";
-import { CAMPAIGN_STATUSES, CAMPAIGN_TYPES, RESERVATION_STATUSES } from "../constants/general";
+import { CAMPAIGN_STATUSES, CAMPAIGN_TYPES, RESERVATION_STATUSES } from "../../constants/general";
 
 export interface CampaignUser {
     name: string;
@@ -82,4 +82,4 @@ export interface Campaign extends Document {
     createdAt: Date;
     updatedAt: Date;
     canAssign: boolean;
-} 
+}

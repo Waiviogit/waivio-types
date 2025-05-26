@@ -50,7 +50,7 @@ export interface WObject extends Document {
     fields: Field[];
     map?: MapLocation;
     latest_posts: Types.ObjectId[];
-    status?: Record<string, any>;
+    status?: Record<string, string | number | boolean>;
     last_posts_count: number;
     last_posts_counts_by_hours: number[];
     activeCampaigns: Types.ObjectId[];

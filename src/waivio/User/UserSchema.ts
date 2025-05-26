@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { LANGUAGES, REFERRAL_STATUSES, REFERRAL_TYPES, SUPPORTED_CURRENCIES } from "../constants/general";
+import { LANGUAGES, REFERRAL_STATUSES, REFERRAL_TYPES, SUPPORTED_CURRENCIES } from "../../constants/general";
 import { User, UserAuth, UserReferral, UserShop, UserMetadata, UserNotifications } from "./types";
 
 const UserShopSchema = new mongoose.Schema<UserShop>({
@@ -89,7 +89,7 @@ const UserAuthSchema = new mongoose.Schema<UserAuth>({
     provider: { type: String },
 }, { _id: false });
 
-const UserSchema = new mongoose.Schema<User>({
+export const UserSchema = new mongoose.Schema<User>({
     name: { type: String, index: true, unique: true },
     alias: { type: String },
     profile_image: { type: String },

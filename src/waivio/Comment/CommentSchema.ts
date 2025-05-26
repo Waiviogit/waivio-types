@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Comment, CommentActiveVote, CommentGuestInfo } from "./types";
+import { Comment } from "./types";
 
 const CommentSchema = new mongoose.Schema<Comment>({
     author: { type: String, required: true },

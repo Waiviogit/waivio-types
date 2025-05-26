@@ -1,5 +1,5 @@
 import { Document } from "mongoose";
-import { BOT_UPVOTE_STATUSES } from "../constants/general";
+import { BOT_UPVOTE_STATUSES } from "../../constants/general";
 
 export interface BotUpvote extends Document {
     botName: string;
@@ -20,4 +20,4 @@ export interface BotUpvote extends Document {
     expiredAt: Date;
     createdAt: Date;
     updatedAt: Date;
-} 
+}

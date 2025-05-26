@@ -1,5 +1,5 @@
 import { Document } from "mongoose";
-import { LANGUAGES } from "../constants/general";
+import { LANGUAGES } from "../../constants/general";
 
 export interface PostActiveVote {
     voter: string;
@@ -52,4 +52,4 @@ export interface Post extends Document {
     fullObjects?: unknown[];
     createdAt: Date;
     updatedAt: Date;
-} 
+}

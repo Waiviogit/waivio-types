@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import _ from "lodash";
-import { STATUSES, SHOP_SETTINGS_TYPE, BILLING_TYPE, SUPPORTED_CURRENCIES, LANGUAGES, REFERRAL_TYPES } from "../constants/general";
+import { STATUSES, SHOP_SETTINGS_TYPE, BILLING_TYPE, SUPPORTED_CURRENCIES, LANGUAGES, REFERRAL_TYPES } from "../../constants/general";
 import { App, AppAdSense, AppTopUser, AppTagsData, AppReferralTimer, AppBot, AppCommissions, AppMapPoints, AppHeader, AppColors, AppCity, AppShopSettings, AppConfiguration } from "./types";
 
 const AdSenseSchema = new mongoose.Schema<AppAdSense>({
@@ -95,7 +95,7 @@ const ConfigurationSchema = new mongoose.Schema<AppConfiguration>({
     advancedAI: { type: Boolean },
 });
 
-const AppSchema = new mongoose.Schema<App>({
+export const AppSchema = new mongoose.Schema<App>({
     name: { type: String, required: true },
     owner: { type: String, required: true },
     googleAnalyticsTag: { type: String, default: null },
@@ -163,4 +163,4 @@ AppSchema.pre("save", async function(next) {
     next();
 });
 
-export default AppSchema; 
+export default AppSchema;

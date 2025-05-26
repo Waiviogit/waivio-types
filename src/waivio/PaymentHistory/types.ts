@@ -19,7 +19,7 @@ export interface PaymentHistory extends Document {
     amount: number;
     is_demo_account?: boolean;
     recounted?: boolean;
-    details?: Record<string, any>;
+    details?: Record<string, string | number | boolean>;
     withdraw?: string;
     memo?: string;
     createdAt: Date;
