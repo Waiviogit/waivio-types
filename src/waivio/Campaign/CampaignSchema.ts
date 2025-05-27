@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
-import _ from "lodash";
 import { Campaign, CampaignUser, CampaignPayment } from "./types";
-import { CAMPAIGN_STATUSES, CAMPAIGN_TYPES, RESERVATION_STATUSES } from "../constants/general";
+import { CAMPAIGN_STATUSES, CAMPAIGN_TYPES, RESERVATION_STATUSES } from "../../constants/general";
 
 const userSchema = new mongoose.Schema<CampaignUser>({
     name: { type: String, required: true },
@@ -122,8 +121,8 @@ CampaignSchema.index({ reward: -1 });
 
 CampaignSchema.virtual('canAssign').get(function() {
     const countAssigns = parseInt(String(this.budget / this.reward), 10);
-    const filterUsers = _.filter(this.users, (user) => 
-        ['assigned', 'completed'].includes(user.status) && 
+    const filterUsers = this.users.filter((user) =>
+        ['assigned', 'completed'].includes(user.status) &&
         new Date(user.createdAt).getMonth() === new Date().getMonth()
     );
     return countAssigns > filterUsers.length;
@@ -138,10 +137,10 @@ CampaignSchema.pre('save', function(next) {
         const error = new Error('Match bots limited');
         return next(error);
     }
-    if (this.map && (!this.map.type || this.map.coordinates.length === 0)) {
+    if (this.map && (!this.map.type || !this.map.coordinates || this.map.coordinates.some(coord => coord === undefined || coord === null))) {
         this.map = undefined;
     }
     next();
 });
 
-export default CampaignSchema; 
+export default CampaignSchema;

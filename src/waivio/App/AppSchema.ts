@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import _ from "lodash";
 import { STATUSES, SHOP_SETTINGS_TYPE, BILLING_TYPE, SUPPORTED_CURRENCIES, LANGUAGES, REFERRAL_TYPES } from "../../constants/general";
 import { App, AppAdSense, AppTopUser, AppTagsData, AppReferralTimer, AppBot, AppCommissions, AppMapPoints, AppHeader, AppColors, AppCity, AppShopSettings, AppConfiguration } from "./types";
 
@@ -156,8 +155,8 @@ AppSchema.pre("save", async function(next) {
     if (this.parent) {
         const parentApp = await this.model("App").findOne({ name: this.parent }) as App;
         if (parentApp) {
-            this.supported_object_types = _.union(this.supported_object_types, parentApp.supported_object_types);
-            this.object_filters = _.merge({}, parentApp.object_filters, this.object_filters);
+            this.supported_object_types = [...new Set([...this.supported_object_types, ...parentApp.supported_object_types])];
+            this.object_filters = { ...parentApp.object_filters, ...this.object_filters };
         }
     }
     next();

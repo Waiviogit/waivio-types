@@ -4,7 +4,6 @@ export default defineConfig({
   entry: ['src/index.ts'],
   format: ['esm', 'cjs'],
   dts: true,
-  external: ['lodash', 'mongoose'],
   splitting: false,
   sourcemap: true,
   clean: true,
@@ -16,4 +15,4 @@ export default defineConfig({
     options.keepNames = true;
     return options;
   },
-}); 
+});
