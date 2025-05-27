@@ -98,7 +98,8 @@ export type {
 } from './waivio/MutedUser/types';
 export type {
   ObjectType,
-  TopExpert
+  SupposedUpdates,
+  TopExpert,
 } from './waivio/ObjectType/types';
 export type {
   PageDraft

@@ -1,5 +1,12 @@
 import mongoose from "mongoose";
-import { ObjectType, TopExpert } from "./types";
+import { ObjectType, SupposedUpdates, TopExpert } from "./types";
+
+
+const SupposedUpdatesSchema = new mongoose.Schema<SupposedUpdates>({
+    name: { type: String },
+    values: { type: [String] },
+    id_path: { type: String },
+}, { _id: false });
 
 const TopExpertSchema = new mongoose.Schema<TopExpert>({
     name: { type: String },
@@ -14,6 +21,7 @@ const ObjectTypeSchema = new mongoose.Schema<ObjectType>({
     weight: { type: Number, default: 0 },
     top_experts: { type: [TopExpertSchema], default: [] },
     exposedFields: { type: [String], default: [] },
+    supposed_updates: { type: [SupposedUpdatesSchema], default: [] },
 }, {
     toObject: { virtuals: true },
     timestamps: true,
