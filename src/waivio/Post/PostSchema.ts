@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { LANGUAGES } from "../../constants/general";
 import { Post, PostActiveVote, PostWobject, PostReblog } from "./types";
+import {MODEL_NAME} from "../../constants/models";
 
 const ActiveVoteSchema = new mongoose.Schema<PostActiveVote>({
     voter: { type: String },
@@ -60,7 +61,7 @@ PostSchema.virtual('post_id').get(function() {
 });
 
 PostSchema.virtual('fullObjects', {
-    ref: 'wobject',
+    ref: MODEL_NAME.WOBJECT,
     localField: 'wobjects.author_permlink',
     foreignField: 'author_permlink',
     justOne: false,

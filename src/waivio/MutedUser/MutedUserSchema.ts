@@ -1,8 +1,6 @@
 import mongoose from "mongoose";
 import {MutedUser} from "./types";
 
-
-
 const MutedUserSchema = new mongoose.Schema<MutedUser>({
     userName: { type: String, required: true },
     mutedBy: { type: String, required: true },
@@ -14,4 +12,4 @@ const MutedUserSchema = new mongoose.Schema<MutedUser>({
 MutedUserSchema.index({ userName: 1, mutedBy: 1 }, { unique: true });
 
 
-
+export default MutedUserSchema;

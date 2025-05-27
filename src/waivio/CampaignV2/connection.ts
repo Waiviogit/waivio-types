@@ -1,6 +1,8 @@
+import {COLLECTION_NAME, DB_NAME, MODEL_NAME, SCHEMA_NAME} from "../../constants/models";
+
 export const CampaignV2Connection = {
-    modelName: 'CampaignsV2',
-    collectionName: 'campaignsV2',
-    schemaName: 'CampaignV2Schema',
-    databaseName: 'waivio',
-} as const; 
+    modelName: MODEL_NAME.CAMPAIGN_V2,
+    collectionName: COLLECTION_NAME.CAMPAIGN_V2,
+    schemaName: SCHEMA_NAME.CAMPAIGN_V2,
+    databaseName: DB_NAME.WAIVIO,
+} as const;

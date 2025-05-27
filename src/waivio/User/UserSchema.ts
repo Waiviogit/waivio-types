@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { LANGUAGES, REFERRAL_STATUSES, REFERRAL_TYPES, SUPPORTED_CURRENCIES } from "../../constants/general";
 import { User, UserAuth, UserReferral, UserShop, UserMetadata, UserNotifications } from "./types";
+import {MODEL_NAME} from "../../constants/models";
 
 const UserShopSchema = new mongoose.Schema<UserShop>({
     hideLinkedObjects: { type: Boolean },
@@ -127,6 +128,42 @@ export const UserSchema = new mongoose.Schema<User>({
 
 UserSchema.index({ wobjects_weight: -1 });
 UserSchema.index({ objects_follow: -1 });
+
+UserSchema.virtual('full_objects_follow', { // get full structure of objects instead only author_permlink
+    ref: MODEL_NAME.WOBJECT,
+    localField: 'objects_follow',
+    foreignField: 'author_permlink',
+    justOne: false,
+});
+
+UserSchema.virtual('objects_following_count', {
+    ref: MODEL_NAME.WOBJECT_SUBSCRIPTIONS,
+    localField: 'name',
+    foreignField: 'follower',
+    justOne: false,
+    count: true,
+});
+
+UserSchema.virtual('objects_shares_count', {
+    ref: MODEL_NAME.USER_WOBJECTS,
+    localField: 'name',
+    foreignField: 'user_name',
+    count: true,
+});
+
+UserSchema.pre('findOneAndUpdate', async function (next) {
+    const doc = await this.model.findOne(this.getQuery());
+    if (!doc) this.set({ auth: null });
+    next();
+});
+
+UserSchema.pre('find', function () {
+    this.populate('objects_following_count');
+});
+
+UserSchema.pre('findOne', function () {
+    this.populate('objects_following_count');
+});
 
 export default UserSchema;
 

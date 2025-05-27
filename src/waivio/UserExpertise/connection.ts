@@ -1,6 +1,8 @@
+import { COLLECTION_NAME, DB_NAME, MODEL_NAME, SCHEMA_NAME } from "../../constants/models";
+
 export const UserExpertiseConnection = {
-    modelName: 'user_expertise',
-    collectionName: 'user_expertises',
-    schemaName: 'UserExpertiseSchema',
-    databaseName: 'waivio',
+    modelName: MODEL_NAME.USER_EXPERTISE,
+    collectionName: COLLECTION_NAME.USER_EXPERTISE,
+    schemaName: SCHEMA_NAME.USER_EXPERTISE,
+    databaseName: DB_NAME.WAIVIO,
 } as const;

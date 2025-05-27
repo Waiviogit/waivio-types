@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { Subscription } from "./types";
+import {MODEL_NAME} from "../../constants/models";
 
 const SubscriptionSchema = new mongoose.Schema<Subscription>({
     follower: { type: String, required: true },
@@ -11,17 +12,17 @@ SubscriptionSchema.index({ follower: 1, following: 1 }, { unique: true });
 SubscriptionSchema.index({ following: 1 });
 
 SubscriptionSchema.virtual('followerPath', {
-    ref: 'User',
+    ref: MODEL_NAME.USER,
     localField: 'follower',
     foreignField: 'name',
     justOne: true,
 });
 
 SubscriptionSchema.virtual('followingPath', {
-    ref: 'User',
+    ref: MODEL_NAME.USER,
     localField: 'following',
     foreignField: 'name',
     justOne: true,
 });
 
-export default SubscriptionSchema; 
+export default SubscriptionSchema;

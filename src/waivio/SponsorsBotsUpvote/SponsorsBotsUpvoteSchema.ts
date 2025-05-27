@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { BOT_UPVOTE_STATUSES } from "../constants/campaignsData";
+import { BOT_UPVOTE_STATUSES } from "../../constants/general";
 import { SponsorsUpvote } from "./types";
 
 const SponsorsUpvoteSchema = new mongoose.Schema<SponsorsUpvote>({

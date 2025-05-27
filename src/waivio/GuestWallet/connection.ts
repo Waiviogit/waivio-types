@@ -1,6 +1,8 @@
+import { COLLECTION_NAME, DB_NAME, MODEL_NAME, SCHEMA_NAME } from '../../constants/models';
+
 export const GuestWalletConnection = {
-    modelName: 'guest_wallet',
-    collectionName: 'guest_wallets',
-    schemaName: 'GuestWalletSchema',
-    databaseName: 'waivio',
+    modelName: MODEL_NAME.GUEST_WALLET,
+    collectionName: COLLECTION_NAME.GUEST_WALLET,
+    schemaName: SCHEMA_NAME.GUEST_WALLET,
+    databaseName: DB_NAME.WAIVIO,
 } as const;

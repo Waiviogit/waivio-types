@@ -1,6 +1,8 @@
+import { COLLECTION_NAME, DB_NAME, MODEL_NAME, SCHEMA_NAME } from '../../constants/models';
+
 export const EngineAdvancedReportStatusConnection = {
-    modelName: 'engine_advanced_report_status',
-    collectionName: 'engine_advanced_report_status',
-    schemaName: 'EngineAdvancedReportStatusSchema',
-    databaseName: 'waivio',
+    modelName: MODEL_NAME.ENGINE_ADVANCED_REPORT_STATUS,
+    collectionName: COLLECTION_NAME.ENGINE_ADVANCED_REPORT_STATUS,
+    schemaName: SCHEMA_NAME.ENGINE_ADVANCED_REPORT_STATUS,
+    databaseName: DB_NAME.WAIVIO,
 } as const; 
